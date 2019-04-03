@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AndroidTesting</string>
+    <string name="valid_text">Valid</string>
+    <string name="invalid_text">Invalid</string>
 </resources>

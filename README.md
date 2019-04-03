@@ -1,5 +1,5 @@
-Android UI Testing
-==================
+Android Testing (UI)
+====================
 
 Test your Android app's UI using Espresso! This app contains two form fields: one for a ZIP 
 code, the other for a password. You can record UI tests in Android Studio using the menus:
