@@ -27,7 +27,7 @@ import static org.junit.Assert.*;
 public class ExampleInstrumentedTest {
     @Rule
     public ActivityTestRule<MainActivity> mActivityRule =
-            new ActivityTestRule(MainActivity.class);
+            new ActivityTestRule<>(MainActivity.class);
 
     @Test
     public void useAppContext() {
