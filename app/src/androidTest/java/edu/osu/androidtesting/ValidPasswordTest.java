@@ -6,9 +6,9 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 
 import androidx.test.espresso.ViewInteraction;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
+import androidx.test.runner.AndroidJUnit4;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -45,7 +45,7 @@ public class ValidPasswordTest {
 										0),
 								6),
 						isDisplayed()));
-		appCompatEditText.perform(replaceText("ABC123abc"), closeSoftKeyboard());
+		appCompatEditText.perform(replaceText("AbCaBc123"), closeSoftKeyboard());
 
 		ViewInteraction appCompatButton = onView(
 				allOf(withId(R.id.verify_password_button), withText("Verify Password"),

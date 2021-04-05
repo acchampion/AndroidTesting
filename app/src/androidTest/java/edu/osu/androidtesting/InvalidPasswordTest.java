@@ -6,9 +6,9 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 
 import androidx.test.espresso.ViewInteraction;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
+import androidx.test.runner.AndroidJUnit4;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -18,6 +18,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
@@ -36,12 +37,6 @@ public class InvalidPasswordTest {
 
 	@Test
 	public void invalidPasswordTest() {
-		ViewInteraction textView = onView(
-				allOf(withId(R.id.password_valid), withText("Invalid"),
-						withParent(withParent(withId(R.id.fragment_container))),
-						isDisplayed()));
-		textView.check(matches(withText("Invalid")));
-
 		ViewInteraction appCompatEditText = onView(
 				allOf(withId(R.id.password_text),
 						childAtPosition(
@@ -51,6 +46,22 @@ public class InvalidPasswordTest {
 								6),
 						isDisplayed()));
 		appCompatEditText.perform(replaceText("abcdef"), closeSoftKeyboard());
+
+		ViewInteraction appCompatButton = onView(
+				allOf(withId(R.id.verify_password_button), withText("Verify Password"),
+						childAtPosition(
+								childAtPosition(
+										withId(R.id.fragment_container),
+										0),
+								7),
+						isDisplayed()));
+		appCompatButton.perform(click());
+
+		ViewInteraction textView = onView(
+				allOf(withId(R.id.password_valid), withText("Invalid"),
+						withParent(withParent(withId(R.id.fragment_container))),
+						isDisplayed()));
+		textView.check(matches(withText("Invalid")));
 	}
 
 	private static Matcher<View> childAtPosition(

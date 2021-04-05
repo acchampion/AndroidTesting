@@ -30,7 +30,7 @@ public class ExampleUnitTest {
 	@Test
 	public void isZipCodeValid() throws Exception {
 		String zip = "43210";
-		assert((zip.length() == 5 || zip.length() == 9) && zip.matches("[0-9]+"));
+		assert (!(zip.length() == 5 || zip.length() == 9) && zip.matches("[0-9]+"));
 	}
 
 	@Test
